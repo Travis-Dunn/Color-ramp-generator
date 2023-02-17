@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
+from tkinter import simpledialog
 import colorsys
+
 
 
 def convert_to_hex(h, s, v):
@@ -32,15 +35,88 @@ def convert_to_hex(h, s, v):
     r, g, b = int(r * 255), int(g * 255), int(b * 255)
     return '#{:02x}{:02x}{:02x}'.format(r, g, b)
 
-def display_color():
-    h = float(hue_entry.get())
-    s = float(saturation_entry.get())
-    v = float(value_entry.get())
+def contrast_ratio(color1, color2):
+    if color1[0] == "#":
+        color1 = color1[1:]
+    if color2[0] == "#":
+        color2 = color2[1:]
+    """
+    Calculates the contrast ratio between two hexadecimal color codes.
+    """
+    def get_luminance(color):
+        """
+        Calculates the relative luminance of a color.
+        """
+        r, g, b = [(int(color[i:i+2], 16) / 255) ** 2.2 for i in (0, 2, 4)]
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+    
+    l1 = get_luminance(color1)
+    l2 = get_luminance(color2)
+    if l1 > l2:
+        return (l1 + 0.05) / (l2 + 0.05)
+    else:
+        return (l2 + 0.05) / (l1 + 0.05)
 
-    hex_code = convert_to_hex(h, s, v)
-    hex_label.config(text=hex_code)
-    canvas.create_oval(10, 10, 90, 90, fill=hex_code)
 
+
+def increment_color(hue, saturation, value, dHue, dSaturation, dValue):
+    scalar = 1
+    new_hue = hue + dHue*scalar
+    new_saturation = saturation + dSaturation*scalar
+    new_value = value + dValue*scalar
+
+    def greater_than_1(h, s, v, h1, s1, v1):
+        if int(abs(h - h1)) > 1 or int(abs(s - s1)) > 1 or int(abs(v - v1)) > 1:
+            return True
+        else:
+            return False
+    def less_than_1(h, s, v, h1, s1, v1):
+        if int(abs(h - h1)) < 1 and int(abs(s - s1)) < 1 and int(abs(v - v1)) < 1:
+            return True
+        else:
+            return False
+
+    if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+        scalar *= 0.5
+        new_hue = hue + dHue*scalar
+        new_saturation = saturation + dSaturation*scalar
+        new_value = value + dValue*scalar
+
+        if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+            scalar *= 0.5
+            new_hue = hue + dHue*scalar
+            new_saturation = saturation + dSaturation*scalar
+            new_value = value + dValue*scalar
+        elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+            scalar *= 1.5
+            new_hue = hue + dHue*scalar
+            new_saturation = saturation + dSaturation*scalar
+            new_value = value + dValue*scalar
+        else:
+            return (new_hue, new_saturation, new_value)
+
+    elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+        scalar *= 1.5
+        new_hue = hue + dHue*scalar
+        new_saturation = saturation + dSaturation*scalar
+        new_value = value + dValue*scalar
+
+        if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+            scalar *= 0.5
+            new_hue = hue + dHue*scalar
+            new_saturation = saturation + dSaturation*scalar
+            new_value = value + dValue*scalar
+        elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+            scalar *= 1.5
+            new_hue = hue + dHue*scalar
+            new_saturation = saturation + dSaturation*scalar
+            new_value = value + dValue*scalar
+        else:
+            return (new_hue, new_saturation, new_value)
+    else:
+        return (new_hue, new_saturation, new_value)
+   
+        
 def convert_to_hsv(hex_code):
     r = int(hex_code[1:3], 16) / 255.0
     g = int(hex_code[3:5], 16) / 255.0
@@ -50,6 +126,43 @@ def convert_to_hsv(hex_code):
     s = int(s * 100)
     v = int(v * 100)
     return (h, s, v)
+
+def display_color():
+    #messagebox.showerror("Error", "An error occurred. The program will now exit.")   
+    if hue_entry.get() != "":
+        h = float(hue_entry.get())
+        s = float(saturation_entry.get())
+        v = float(value_entry.get())
+        dh = float(delta_hue.get())
+        ds = float(delta_saturation.get())
+        dv = float(delta_value.get())
+        tcr = float(target_contrast.get())
+        if h >= 0 and h <= 360 and s > 0 and s <= 100 and v > 0 and v <= 100:
+            hex_code = convert_to_hex(h, s, v)
+            hex_label.config(text=hex_code)
+            #hex_entry.setvar(hex_code)            
+            canvas.create_oval(10, 10, 90, 90, fill=hex_code)
+
+    #elif hex_entry.get()[0] == '#' and len.hex_entry.get() == 7:
+        #hex_code = hex_entry.get()        
+        #canvas.create_oval(10, 10, 90, 90, fill=hex_code)
+    
+            
+            hex1_h, hex1_s, hex1_v = increment_color(h, s, v, dh, ds, dv)
+            hex1 = convert_to_hex(hex1_h, hex1_s, hex1_v)
+            contrast = contrast_ratio(hex_code, hex1)
+            counter = 0
+            while contrast < tcr:
+                #nHue, nSaturation, nValue = convert_to_hsv(hex1)
+                #hex1 = increment_color(nHue, nSaturation, nValue, dh, ds, dv)
+                hex1_h, hex1_s, hex1_v = increment_color(hex1_h, hex1_s, hex1_v, dh, ds, dv)
+                hex1 = convert_to_hex(hex1_h, hex1_s, hex1_v)
+                contrast = contrast_ratio(hex_code, hex1)                
+                counter += 1
+
+            hex_label1.config(text=hex1)
+            canvas1.create_oval(10, 10, 90, 90, fill=hex1)
+
 
 root = tk.Tk()
 root.title("Color Converter")
@@ -62,25 +175,41 @@ root.rowconfigure(0, weight=1)
 hue_entry = ttk.Entry(mainframe)
 saturation_entry = ttk.Entry(mainframe)
 value_entry = ttk.Entry(mainframe)
-hex_entry = ttk.Entry(mainframe)
+target_contrast = ttk.Entry(mainframe)
+delta_hue = ttk.Entry(mainframe)
+delta_saturation = ttk.Entry(mainframe)
+delta_value = ttk.Entry(mainframe)
+#hex_entry = ttk.Entry(mainframe)
 
 hue_entry.grid(column=2, row=1, sticky=(tk.W, tk.E))
 saturation_entry.grid(column=2, row=2, sticky=(tk.W, tk.E))
 value_entry.grid(column=2, row=3, sticky=(tk.W, tk.E))
-hex_entry.grid(column=2, row=4, sticky=(tk.W, tk.E))
+#hex_entry.grid(column=2, row=8, sticky=(tk.W, tk.E))
+target_contrast.grid(column=2, row=4, sticky=(tk.W, tk.E))
+delta_hue.grid(column=2, row=5, sticky=(tk.W, tk.E))
+delta_saturation.grid(column=2, row=6, sticky=(tk.W, tk.E))
+delta_value.grid(column=2, row=7, sticky=(tk.W, tk.E))
 
 ttk.Label(mainframe, text="Hue:").grid(column=1, row=1, sticky=tk.W)
 ttk.Label(mainframe, text="Saturation:").grid(column=1, row=2, sticky=tk.W)
 ttk.Label(mainframe, text="Value:").grid(column=1, row=3, sticky=tk.W)
-ttk.Label(mainframe, text="Hex:").grid(column=1, row=4, sticky=tk.W)
+#ttk.Label(mainframe, text="Hex:").grid(column=1, row=8, sticky=tk.W)
+ttk.Label(mainframe, text="Target contrast:").grid(column=1, row=4, sticky=tk.W)
+ttk.Label(mainframe, text="Delta hue:").grid(column=1, row=5, sticky=tk.W)
+ttk.Label(mainframe, text="Delta saturation:").grid(column=1, row=6, sticky=tk.W)
+ttk.Label(mainframe, text="Delta value:").grid(column=1, row=7, sticky=tk.W)
 
 hex_label = ttk.Label(mainframe, text="")
-hex_label.grid(column=2, row=4, sticky=tk.W)
+hex_label.grid(column=3, row=5, sticky=tk.W)
+hex_label1 = ttk.Label(mainframe, text="")
+hex_label1.grid(column=4, row=5, sticky=tk.W)
 
 canvas = tk.Canvas(mainframe, bg='white', width=110, height=110)
 canvas.grid(column=3, row=1, rowspan=4, sticky=(tk.W, tk.E))
+canvas1 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+canvas1.grid(column=4, row=1, rowspan=4, sticky=(tk.W, tk.E))
 
-ttk.Button(mainframe, text="Display Color", command=display_color).grid(column=2, row=5, sticky=tk.W)
+ttk.Button(mainframe, text="Display Color", command=display_color).grid(column=2, row=9, sticky=tk.W)
 
 for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
 
