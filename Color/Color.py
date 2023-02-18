@@ -40,13 +40,8 @@ def contrast_ratio(color1, color2):
         color1 = color1[1:]
     if color2[0] == "#":
         color2 = color2[1:]
-    """
-    Calculates the contrast ratio between two hexadecimal color codes.
-    """
-    def get_luminance(color):
-        """
-        Calculates the relative luminance of a color.
-        """
+    
+    def get_luminance(color):        
         r, g, b = [(int(color[i:i+2], 16) / 255) ** 2.2 for i in (0, 2, 4)]
         return 0.2126 * r + 0.7152 * g + 0.0722 * b
     
@@ -56,57 +51,6 @@ def contrast_ratio(color1, color2):
         return (l1 + 0.05) / (l2 + 0.05)
     else:
         return (l2 + 0.05) / (l1 + 0.05)
-
-
-
-#def increment_color(hue, saturation, value, dHue, dSaturation, dValue):
-#    scalar = 1
-#    new_hue = hue + dHue*scalar
-#    new_saturation = saturation + dSaturation*scalar
-#    new_value = value + dValue*scalar
-#
-#    def greater_than_1(h, s, v, h1, s1, v1):
-#        if int(abs(h - h1)) > 1 or int(abs(s - s1)) > 1 or int(abs(v - v1)) > 1:
-#            return True
-#        else:
-#            return False
-#    def less_than_1(h, s, v, h1, s1, v1):
-#        if int(abs(h - h1)) < 1 and int(abs(s - s1)) < 1 and int(abs(v - v1)) < 1:
-#            return True
-#        else:
-#            return False
-#    def adjust():
-#        new_hue = hue + dHue*scalar
-#        new_saturation = saturation + dSaturation*scalar
-#        new_value = value + dValue*scalar
-#
-#    if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
-#        scalar *= 0.5
-#        adjust()
-#
-#        if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
-#            scalar *= 0.5
-#            adjust()
-#        elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
-#            scalar *= 1.5
-#            adjust()
-#        else:
-#            return (new_hue, new_saturation, new_value)
-#
-#    elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
-#        scalar *= 1.5
-#        adjust()
-#
-#        if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
-#            scalar *= 0.5
-#            adjust()
-#        elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
-#            scalar *= 1.5
-#            adjust()
-#        else:
-#            return (new_hue, new_saturation, new_value)
-#    else:
-#        return (new_hue, new_saturation, new_value)
 
 def increment_color(hue, saturation, value, dHue, dSaturation, dValue):
     scalar = 1
@@ -152,8 +96,7 @@ def convert_to_hsv(hex_code):
     v = int(v * 100)
     return (h, s, v)
 
-def display_color():
-    #messagebox.showerror("Error", "An error occurred. The program will now exit.")   
+def display_color(hex_0, hex_1, hex_2, hex_3, hex_4, hex_5, hex_6, hex_7):     
     if hue_entry.get() != "":
         h = float(hue_entry.get())
         s = float(saturation_entry.get())
@@ -164,14 +107,11 @@ def display_color():
         tcr = float(target_contrast.get())
         if h >= 0 and h <= 360 and s > 0 and s <= 100 and v > 0 and v <= 100:
             hex_code = convert_to_hex(h, s, v)
-            hex_label.config(text=hex_code)
-            #hex_entry.setvar(hex_code)            
+            hex_label.config(text=hex_code)                  
             canvas.create_oval(10, 10, 90, 90, fill=hex_code)
-
-    #elif hex_entry.get()[0] == '#' and len.hex_entry.get() == 7:
-        #hex_code = hex_entry.get()        
-        #canvas.create_oval(10, 10, 90, 90, fill=hex_code)
-    
+            hex_0 = hex_code
+            
+            #1
             
             hex1_h, hex1_s, hex1_v = increment_color(h, s, v, dh, ds, dv)
             hex1 = convert_to_hex(hex1_h, hex1_s, hex1_v)
@@ -187,6 +127,7 @@ def display_color():
 
             hex_label1.config(text=hex1)
             canvas1.create_oval(10, 10, 90, 90, fill=hex1)
+            hex_1 = str(hex1)
 
             #2
 
@@ -203,6 +144,7 @@ def display_color():
                     return
             hex_label2.config(text=hex2)
             canvas2.create_oval(10, 10, 90, 90, fill=hex2)
+            hex_2 = hex2
             
 
             #3
@@ -220,6 +162,7 @@ def display_color():
                     return
             hex_label3.config(text=hex3)
             canvas3.create_oval(10, 10, 90, 90, fill=hex3)
+            hex_3 = hex3
 
             #4
 
@@ -236,6 +179,7 @@ def display_color():
                     return
             hex_label4.config(text=hex4)
             canvas4.create_oval(10, 10, 90, 90, fill=hex4)
+            hex_4 = hex4
 
             #5
 
@@ -252,6 +196,7 @@ def display_color():
                     return
             hex_label5.config(text=hex5)
             canvas5.create_oval(10, 10, 90, 90, fill=hex5)
+            hex_5 = hex5
 
             #6
 
@@ -268,6 +213,7 @@ def display_color():
                     return
             hex_label6.config(text=hex6)
             canvas6.create_oval(10, 10, 90, 90, fill=hex6)
+            hex_6 = hex6
 
             #7
 
@@ -284,87 +230,105 @@ def display_color():
                     return
             hex_label7.config(text=hex7)
             canvas7.create_oval(10, 10, 90, 90, fill=hex7)
+            hex_7 = hex7
+
+def copy_to_clipboard(hex):
+    root.clipboard_clear()
+    root.clipboard_append(hex)
 
 
-root = tk.Tk()
-root.title("Color Converter")
+hex_0 = ""
+hex_1 = "empty"
+hex_2 = ""
+hex_3 = ""
+hex_4 = ""
+hex_5 = ""
+hex_6 = ""
+hex_7 = ""
 
-mainframe = ttk.Frame(root, padding="3 3 12 12")
-mainframe.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
-root.columnconfigure(0, weight=1)
-root.rowconfigure(0, weight=1)
-
-hue_entry = ttk.Entry(mainframe)
-saturation_entry = ttk.Entry(mainframe)
-value_entry = ttk.Entry(mainframe)
-target_contrast = ttk.Entry(mainframe)
-delta_hue = ttk.Entry(mainframe)
-delta_saturation = ttk.Entry(mainframe)
-delta_value = ttk.Entry(mainframe)
-#hex_entry = ttk.Entry(mainframe)
-
-hue_entry.grid(column=2, row=1, sticky=(tk.W, tk.E))
-saturation_entry.grid(column=2, row=2, sticky=(tk.W, tk.E))
-value_entry.grid(column=2, row=3, sticky=(tk.W, tk.E))
-#hex_entry.grid(column=2, row=8, sticky=(tk.W, tk.E))
-target_contrast.grid(column=2, row=4, sticky=(tk.W, tk.E))
-delta_hue.grid(column=2, row=5, sticky=(tk.W, tk.E))
-delta_saturation.grid(column=2, row=6, sticky=(tk.W, tk.E))
-delta_value.grid(column=2, row=7, sticky=(tk.W, tk.E))
-
-ttk.Label(mainframe, text="Hue:").grid(column=1, row=1, sticky=tk.W)
-ttk.Label(mainframe, text="Saturation:").grid(column=1, row=2, sticky=tk.W)
-ttk.Label(mainframe, text="Value:").grid(column=1, row=3, sticky=tk.W)
-#ttk.Label(mainframe, text="Hex:").grid(column=1, row=8, sticky=tk.W)
-ttk.Label(mainframe, text="Target contrast:").grid(column=1, row=4, sticky=tk.W)
-ttk.Label(mainframe, text="Delta hue:").grid(column=1, row=5, sticky=tk.W)
-ttk.Label(mainframe, text="Delta saturation:").grid(column=1, row=6, sticky=tk.W)
-ttk.Label(mainframe, text="Delta value:").grid(column=1, row=7, sticky=tk.W)
-
-hex_label = ttk.Label(mainframe, text="")
-hex_label1 = ttk.Label(mainframe, text="")
-hex_label2 = ttk.Label(mainframe, text="")
-hex_label3 = ttk.Label(mainframe, text="")
-hex_label4 = ttk.Label(mainframe, text="")
-hex_label5 = ttk.Label(mainframe, text="")
-hex_label6 = ttk.Label(mainframe, text="")
-hex_label7 = ttk.Label(mainframe, text="")
-
-
-hex_label.grid(column=3, row=5, sticky=tk.W)
-hex_label1.grid(column=4, row=5, sticky=tk.W)
-hex_label2.grid(column=5, row=5, sticky=tk.W)
-hex_label3.grid(column=6, row=5, sticky=tk.W)
-hex_label4.grid(column=7, row=5, sticky=tk.W)
-hex_label5.grid(column=8, row=5, sticky=tk.W)
-hex_label6.grid(column=9, row=5, sticky=tk.W)
-hex_label7.grid(column=10, row=5, sticky=tk.W)
-
-
-canvas = tk.Canvas(mainframe, bg='white', width=110, height=110)
-canvas1 = tk.Canvas(mainframe, bg='white', width=110, height=110)
-canvas2 = tk.Canvas(mainframe, bg='white', width=110, height=110)
-canvas3 = tk.Canvas(mainframe, bg='white', width=110, height=110)
-canvas4 = tk.Canvas(mainframe, bg='white', width=110, height=110)
-canvas5 = tk.Canvas(mainframe, bg='white', width=110, height=110)
-canvas6 = tk.Canvas(mainframe, bg='white', width=110, height=110)
-canvas7 = tk.Canvas(mainframe, bg='white', width=110, height=110)
-
-
-canvas.grid(column=3, row=1, rowspan=4, sticky=(tk.W, tk.E))
-canvas1.grid(column=4, row=1, rowspan=4, sticky=(tk.W, tk.E))
-canvas2.grid(column=5, row=1, rowspan=4, sticky=(tk.W, tk.E))
-canvas3.grid(column=6, row=1, rowspan=4, sticky=(tk.W, tk.E))
-canvas4.grid(column=7, row=1, rowspan=4, sticky=(tk.W, tk.E))
-canvas5.grid(column=8, row=1, rowspan=4, sticky=(tk.W, tk.E))
-canvas6.grid(column=9, row=1, rowspan=4, sticky=(tk.W, tk.E))
-canvas7.grid(column=10, row=1, rowspan=4, sticky=(tk.W, tk.E))
-
-ttk.Button(mainframe, text="Display Color", command=display_color).grid(column=2, row=9, sticky=tk.W)
-
-for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
-
-hue_entry.focus()
-root.bind('<Return>', display_color)
-
-root.mainloop()
+while True:
+    root = tk.Tk()
+    root.title("Color Converter")
+    
+    mainframe = ttk.Frame(root, padding="3 3 12 12")
+    mainframe.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+    root.columnconfigure(0, weight=1)
+    root.rowconfigure(0, weight=1)    
+    
+    hue_entry = ttk.Entry(mainframe)
+    saturation_entry = ttk.Entry(mainframe)
+    value_entry = ttk.Entry(mainframe)
+    target_contrast = ttk.Entry(mainframe)
+    delta_hue = ttk.Entry(mainframe)
+    delta_saturation = ttk.Entry(mainframe)
+    delta_value = ttk.Entry(mainframe)
+    #hex_entry = ttk.Entry(mainframe)
+    
+    hue_entry.grid(column=2, row=1, sticky=(tk.W, tk.E))
+    saturation_entry.grid(column=2, row=2, sticky=(tk.W, tk.E))
+    value_entry.grid(column=2, row=3, sticky=(tk.W, tk.E))
+    #hex_entry.grid(column=2, row=8, sticky=(tk.W, tk.E))
+    target_contrast.grid(column=2, row=4, sticky=(tk.W, tk.E))
+    delta_hue.grid(column=2, row=5, sticky=(tk.W, tk.E))
+    delta_saturation.grid(column=2, row=6, sticky=(tk.W, tk.E))
+    delta_value.grid(column=2, row=7, sticky=(tk.W, tk.E))
+    
+    ttk.Label(mainframe, text="Hue:").grid(column=1, row=1, sticky=tk.W)
+    ttk.Label(mainframe, text="Saturation:").grid(column=1, row=2, sticky=tk.W)
+    ttk.Label(mainframe, text="Value:").grid(column=1, row=3, sticky=tk.W)
+    #ttk.Label(mainframe, text="Hex:").grid(column=1, row=8, sticky=tk.W)
+    ttk.Label(mainframe, text="Target contrast:").grid(column=1, row=4, sticky=tk.W)
+    ttk.Label(mainframe, text="Delta hue:").grid(column=1, row=5, sticky=tk.W)
+    ttk.Label(mainframe, text="Delta saturation:").grid(column=1, row=6, sticky=tk.W)
+    ttk.Label(mainframe, text="Delta value:").grid(column=1, row=7, sticky=tk.W)
+    
+    hex_label = ttk.Label(mainframe, text="")
+    hex_label1 = ttk.Label(mainframe, text="")
+    hex_label2 = ttk.Label(mainframe, text="")
+    hex_label3 = ttk.Label(mainframe, text="")
+    hex_label4 = ttk.Label(mainframe, text="")
+    hex_label5 = ttk.Label(mainframe, text="")
+    hex_label6 = ttk.Label(mainframe, text="")
+    hex_label7 = ttk.Label(mainframe, text="")
+    
+    
+    hex_label.grid(column=3, row=5, sticky=tk.W)
+    hex_label1.grid(column=4, row=5, sticky=tk.W)
+    hex_label2.grid(column=5, row=5, sticky=tk.W)
+    hex_label3.grid(column=6, row=5, sticky=tk.W)
+    hex_label4.grid(column=7, row=5, sticky=tk.W)
+    hex_label5.grid(column=8, row=5, sticky=tk.W)
+    hex_label6.grid(column=9, row=5, sticky=tk.W)
+    hex_label7.grid(column=10, row=5, sticky=tk.W)
+    
+    
+    canvas = tk.Canvas(mainframe, bg='white', width=110, height=110)
+    canvas1 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+    canvas2 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+    canvas3 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+    canvas4 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+    canvas5 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+    canvas6 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+    canvas7 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+    
+    
+    canvas.grid(column=3, row=1, rowspan=4, sticky=(tk.W, tk.E))
+    canvas1.grid(column=4, row=1, rowspan=4, sticky=(tk.W, tk.E))
+    canvas2.grid(column=5, row=1, rowspan=4, sticky=(tk.W, tk.E))
+    canvas3.grid(column=6, row=1, rowspan=4, sticky=(tk.W, tk.E))
+    canvas4.grid(column=7, row=1, rowspan=4, sticky=(tk.W, tk.E))
+    canvas5.grid(column=8, row=1, rowspan=4, sticky=(tk.W, tk.E))
+    canvas6.grid(column=9, row=1, rowspan=4, sticky=(tk.W, tk.E))
+    canvas7.grid(column=10, row=1, rowspan=4, sticky=(tk.W, tk.E))
+    
+    ttk.Button(mainframe, text="Display Color", command=lambda: display_color(hex_0, hex_1, hex_2, hex_3, hex_4, hex_5, hex_6, hex_7)).grid(column=2, row=9, sticky=tk.W)
+    
+    ttk.Button(mainframe, text="Copy", command=lambda: copy_to_clipboard(hex_label1.cget("text"))).grid(column=3, row=5, sticky=tk.S)
+    
+    
+    for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+    
+    hue_entry.focus()
+    root.bind('<Return>', display_color)
+    
+    root.mainloop()
