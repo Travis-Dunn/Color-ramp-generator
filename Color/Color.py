@@ -59,62 +59,87 @@ def contrast_ratio(color1, color2):
 
 
 
+#def increment_color(hue, saturation, value, dHue, dSaturation, dValue):
+#    scalar = 1
+#    new_hue = hue + dHue*scalar
+#    new_saturation = saturation + dSaturation*scalar
+#    new_value = value + dValue*scalar
+#
+#    def greater_than_1(h, s, v, h1, s1, v1):
+#        if int(abs(h - h1)) > 1 or int(abs(s - s1)) > 1 or int(abs(v - v1)) > 1:
+#            return True
+#        else:
+#            return False
+#    def less_than_1(h, s, v, h1, s1, v1):
+#        if int(abs(h - h1)) < 1 and int(abs(s - s1)) < 1 and int(abs(v - v1)) < 1:
+#            return True
+#        else:
+#            return False
+#    def adjust():
+#        new_hue = hue + dHue*scalar
+#        new_saturation = saturation + dSaturation*scalar
+#        new_value = value + dValue*scalar
+#
+#    if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+#        scalar *= 0.5
+#        adjust()
+#
+#        if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+#            scalar *= 0.5
+#            adjust()
+#        elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+#            scalar *= 1.5
+#            adjust()
+#        else:
+#            return (new_hue, new_saturation, new_value)
+#
+#    elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+#        scalar *= 1.5
+#        adjust()
+#
+#        if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+#            scalar *= 0.5
+#            adjust()
+#        elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+#            scalar *= 1.5
+#            adjust()
+#        else:
+#            return (new_hue, new_saturation, new_value)
+#    else:
+#        return (new_hue, new_saturation, new_value)
+
 def increment_color(hue, saturation, value, dHue, dSaturation, dValue):
     scalar = 1
-    new_hue = hue + dHue*scalar
-    new_saturation = saturation + dSaturation*scalar
-    new_value = value + dValue*scalar
+    new_hue = hue + dHue * scalar
+    new_saturation = saturation + dSaturation * scalar
+    new_value = value + dValue * scalar
 
-    def greater_than_1(h, s, v, h1, s1, v1):
-        if int(abs(h - h1)) > 1 or int(abs(s - s1)) > 1 or int(abs(v - v1)) > 1:
-            return True
-        else:
-            return False
-    def less_than_1(h, s, v, h1, s1, v1):
-        if int(abs(h - h1)) < 1 and int(abs(s - s1)) < 1 and int(abs(v - v1)) < 1:
-            return True
-        else:
-            return False
-
-    if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
-        scalar *= 0.5
-        new_hue = hue + dHue*scalar
-        new_saturation = saturation + dSaturation*scalar
-        new_value = value + dValue*scalar
-
-        if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+    while True:
+        if int(abs(hue - new_hue)) > 1 or int(abs(saturation - new_saturation)) > 1 or int(abs(value - new_value)) > 1:
             scalar *= 0.5
-            new_hue = hue + dHue*scalar
-            new_saturation = saturation + dSaturation*scalar
-            new_value = value + dValue*scalar
-        elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
+            new_hue = hue + dHue * scalar
+            new_saturation = saturation + dSaturation * scalar
+            new_value = value + dValue * scalar
+        elif int(abs(hue - new_hue)) < 1 and int(abs(saturation - new_saturation)) < 1 and int(abs(value - new_value)) < 1:
             scalar *= 1.5
-            new_hue = hue + dHue*scalar
-            new_saturation = saturation + dSaturation*scalar
-            new_value = value + dValue*scalar
+            new_hue = hue + dHue * scalar
+            new_saturation = saturation + dSaturation * scalar
+            new_value = value + dValue * scalar
         else:
-            return (new_hue, new_saturation, new_value)
-
-    elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
-        scalar *= 1.5
-        new_hue = hue + dHue*scalar
-        new_saturation = saturation + dSaturation*scalar
-        new_value = value + dValue*scalar
-
-        if greater_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
-            scalar *= 0.5
-            new_hue = hue + dHue*scalar
-            new_saturation = saturation + dSaturation*scalar
-            new_value = value + dValue*scalar
-        elif less_than_1(hue, saturation, value, new_hue, new_saturation, new_value):
-            scalar *= 1.5
-            new_hue = hue + dHue*scalar
-            new_saturation = saturation + dSaturation*scalar
-            new_value = value + dValue*scalar
-        else:
-            return (new_hue, new_saturation, new_value)
-    else:
-        return (new_hue, new_saturation, new_value)
+            if new_hue > 360:
+                new_hue = new_hue - 360
+            if new_hue < 0:
+                new_hue = 0
+            if new_saturation > 100:
+                new_saturation = 100
+            if new_saturation < 0:
+                new_saturation = 0
+            if new_value > 100:
+                new_value = 100
+            if new_value < 0:
+                new_value = 0
+            return new_hue, new_saturation, new_value
+            
    
         
 def convert_to_hsv(hex_code):
@@ -163,6 +188,103 @@ def display_color():
             hex_label1.config(text=hex1)
             canvas1.create_oval(10, 10, 90, 90, fill=hex1)
 
+            #2
+
+            hex2_h, hex2_s, hex2_v = increment_color(hex1_h, hex1_s, hex1_v, dh, ds, dv)
+            hex2 = convert_to_hex(hex2_h, hex2_s, hex2_v)
+            contrast = contrast_ratio(hex1, hex2)
+            counter = 0
+            while contrast < tcr:
+                hex2_h, hex2_s, hex2_v = increment_color(hex2_h, hex2_s, hex2_v, dh, ds, dv)
+                hex2 = convert_to_hex(hex2_h, hex2_s, hex2_v)
+                contrast = contrast_ratio(hex1, hex2)
+                counter += 1
+                if counter > 100:
+                    return
+            hex_label2.config(text=hex2)
+            canvas2.create_oval(10, 10, 90, 90, fill=hex2)
+            
+
+            #3
+
+            hex3_h, hex3_s, hex3_v = increment_color(hex2_h, hex2_s, hex2_v, dh, ds, dv)
+            hex3 = convert_to_hex(hex3_h, hex3_s, hex3_v)
+            contrast = contrast_ratio(hex2, hex3)
+            counter = 0
+            while contrast < tcr:
+                hex3_h, hex3_s, hex3_v = increment_color(hex3_h, hex3_s, hex3_v, dh, ds, dv)
+                hex3 = convert_to_hex(hex3_h, hex3_s, hex3_v)
+                contrast = contrast_ratio(hex2, hex3)
+                counter += 1
+                if counter > 100:
+                    return
+            hex_label3.config(text=hex3)
+            canvas3.create_oval(10, 10, 90, 90, fill=hex3)
+
+            #4
+
+            hex4_h, hex4_s, hex4_v = increment_color(hex3_h, hex3_s, hex3_v, dh, ds, dv)
+            hex4 = convert_to_hex(hex4_h, hex4_s, hex4_v)
+            contrast = contrast_ratio(hex3, hex4)
+            counter = 0
+            while contrast < tcr:
+                hex4_h, hex4_s, hex4_v = increment_color(hex4_h, hex4_s, hex4_v, dh, ds, dv)
+                hex4 = convert_to_hex(hex4_h, hex4_s, hex4_v)
+                contrast = contrast_ratio(hex3, hex4)
+                counter += 1
+                if counter > 100:
+                    return
+            hex_label4.config(text=hex4)
+            canvas4.create_oval(10, 10, 90, 90, fill=hex4)
+
+            #5
+
+            hex5_h, hex5_s, hex5_v = increment_color(hex4_h, hex4_s, hex4_v, dh, ds, dv)
+            hex5 = convert_to_hex(hex5_h, hex5_s, hex5_v)
+            contrast = contrast_ratio(hex4, hex5)
+            counter = 0
+            while contrast < tcr:
+                hex5_h, hex5_s, hex5_v = increment_color(hex5_h, hex5_s, hex5_v, dh, ds, dv)
+                hex5 = convert_to_hex(hex5_h, hex5_s, hex5_v)
+                contrast = contrast_ratio(hex4, hex5)
+                counter += 1
+                if counter > 100:
+                    return
+            hex_label5.config(text=hex5)
+            canvas5.create_oval(10, 10, 90, 90, fill=hex5)
+
+            #6
+
+            hex6_h, hex6_s, hex6_v = increment_color(hex5_h, hex5_s, hex5_v, dh, ds, dv)
+            hex6 = convert_to_hex(hex6_h, hex6_s, hex6_v)
+            contrast = contrast_ratio(hex5, hex6)
+            counter = 0
+            while contrast < tcr:
+                hex6_h, hex6_s, hex6_v = increment_color(hex6_h, hex6_s, hex6_v, dh, ds, dv)
+                hex6 = convert_to_hex(hex6_h, hex6_s, hex6_v)
+                contrast = contrast_ratio(hex5, hex6)
+                counter += 1
+                if counter > 100:
+                    return
+            hex_label6.config(text=hex6)
+            canvas6.create_oval(10, 10, 90, 90, fill=hex6)
+
+            #7
+
+            hex7_h, hex7_s, hex7_v = increment_color(hex6_h, hex6_s, hex6_v, dh, ds, dv)
+            hex7 = convert_to_hex(hex7_h, hex7_s, hex7_v)
+            contrast = contrast_ratio(hex6, hex7)
+            counter = 0
+            while contrast < tcr:
+                hex7_h, hex7_s, hex7_v = increment_color(hex7_h, hex7_s, hex7_v, dh, ds, dv)
+                hex7 = convert_to_hex(hex7_h, hex7_s, hex7_v)
+                contrast = contrast_ratio(hex6, hex7)
+                counter += 1
+                if counter > 100:
+                    return
+            hex_label7.config(text=hex7)
+            canvas7.create_oval(10, 10, 90, 90, fill=hex7)
+
 
 root = tk.Tk()
 root.title("Color Converter")
@@ -200,14 +322,43 @@ ttk.Label(mainframe, text="Delta saturation:").grid(column=1, row=6, sticky=tk.W
 ttk.Label(mainframe, text="Delta value:").grid(column=1, row=7, sticky=tk.W)
 
 hex_label = ttk.Label(mainframe, text="")
-hex_label.grid(column=3, row=5, sticky=tk.W)
 hex_label1 = ttk.Label(mainframe, text="")
+hex_label2 = ttk.Label(mainframe, text="")
+hex_label3 = ttk.Label(mainframe, text="")
+hex_label4 = ttk.Label(mainframe, text="")
+hex_label5 = ttk.Label(mainframe, text="")
+hex_label6 = ttk.Label(mainframe, text="")
+hex_label7 = ttk.Label(mainframe, text="")
+
+
+hex_label.grid(column=3, row=5, sticky=tk.W)
 hex_label1.grid(column=4, row=5, sticky=tk.W)
+hex_label2.grid(column=5, row=5, sticky=tk.W)
+hex_label3.grid(column=6, row=5, sticky=tk.W)
+hex_label4.grid(column=7, row=5, sticky=tk.W)
+hex_label5.grid(column=8, row=5, sticky=tk.W)
+hex_label6.grid(column=9, row=5, sticky=tk.W)
+hex_label7.grid(column=10, row=5, sticky=tk.W)
+
 
 canvas = tk.Canvas(mainframe, bg='white', width=110, height=110)
-canvas.grid(column=3, row=1, rowspan=4, sticky=(tk.W, tk.E))
 canvas1 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+canvas2 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+canvas3 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+canvas4 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+canvas5 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+canvas6 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+canvas7 = tk.Canvas(mainframe, bg='white', width=110, height=110)
+
+
+canvas.grid(column=3, row=1, rowspan=4, sticky=(tk.W, tk.E))
 canvas1.grid(column=4, row=1, rowspan=4, sticky=(tk.W, tk.E))
+canvas2.grid(column=5, row=1, rowspan=4, sticky=(tk.W, tk.E))
+canvas3.grid(column=6, row=1, rowspan=4, sticky=(tk.W, tk.E))
+canvas4.grid(column=7, row=1, rowspan=4, sticky=(tk.W, tk.E))
+canvas5.grid(column=8, row=1, rowspan=4, sticky=(tk.W, tk.E))
+canvas6.grid(column=9, row=1, rowspan=4, sticky=(tk.W, tk.E))
+canvas7.grid(column=10, row=1, rowspan=4, sticky=(tk.W, tk.E))
 
 ttk.Button(mainframe, text="Display Color", command=display_color).grid(column=2, row=9, sticky=tk.W)
 
