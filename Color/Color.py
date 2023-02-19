@@ -171,13 +171,16 @@ def display_color():
             hex1 = convert_to_hex(hex1_h, hex1_s, hex1_v)
             contrast = contrast_ratio(hex_code, hex1)
             counter = 0
-            while contrast < tcr:
-                #nHue, nSaturation, nValue = convert_to_hsv(hex1)
-                #hex1 = increment_color(nHue, nSaturation, nValue, dh, ds, dv)
+            while contrast < tcr:                
                 hex1_h, hex1_s, hex1_v = increment_color(hex1_h, hex1_s, hex1_v, dh, ds, dv)
                 hex1 = convert_to_hex(hex1_h, hex1_s, hex1_v)
                 contrast = contrast_ratio(hex_code, hex1)                
                 counter += 1
+                if counter > 1000:
+                    hex1 = "#FFFFFF"
+                    hex_label1.config(text=hex1)
+                    canvas1.create_rectangle(0, 0, 110, 110, fill=hex1, outline="")
+                    contrast = 21 
 
             hex_label1.config(text=hex1)
             canvas1.create_rectangle(0, 0, 110, 110, fill=hex1, outline="")
@@ -193,6 +196,11 @@ def display_color():
                 hex1a = convert_to_hex(hex1a_h, hex1a_s, hex1a_v)
                 contrast = contrast_ratio1(hex_code, hex1a)                
                 counter += 1
+                if counter > 1000:
+                    hex1a = "#FFFFFF"
+                    hex_label9.config(text=hex1a)
+                    canvas9.create_rectangle(0, 0, 110, 110, fill=hex1a, outline="")
+                    contrast = 21
 
             hex_label9.config(text=hex1a)
             canvas9.create_rectangle(0, 0, 110, 110, fill=hex1a, outline="")
@@ -208,8 +216,11 @@ def display_color():
                 hex2 = convert_to_hex(hex2_h, hex2_s, hex2_v)
                 contrast = contrast_ratio(hex1, hex2)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex2 = "#FFFFFF"
+                    hex_label2.config(text=hex2)
+                    canvas2.create_rectangle(0, 0, 110, 110, fill=hex2, outline="")
+                    contrast = 21
             hex_label2.config(text=hex2)
             canvas2.create_rectangle(0, 0, 110, 110, fill=hex2, outline="") 
             
@@ -224,8 +235,11 @@ def display_color():
                 hex2a = convert_to_hex(hex2a_h, hex2a_s, hex2a_v)
                 contrast = contrast_ratio1(hex1a, hex2a)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex2a = "#FFFFFF"
+                    hex_label10.config(text=hex2a)
+                    canvas10.create_rectangle(0, 0, 110, 110, fill=hex2a, outline="")
+                    contrast = 21
             hex_label10.config(text=hex2a)
             canvas10.create_rectangle(0, 0, 110, 110, fill=hex2a, outline="")
 
@@ -240,8 +254,11 @@ def display_color():
                 hex3 = convert_to_hex(hex3_h, hex3_s, hex3_v)
                 contrast = contrast_ratio(hex2, hex3)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex3 = "#FFFFFF"
+                    hex_label3.config(text=hex3)
+                    canvas3.create_rectangle(0, 0, 110, 110, fill=hex3, outline="")
+                    contrast = 21
             hex_label3.config(text=hex3)
             canvas3.create_rectangle(0, 0, 110, 110, fill=hex3, outline="") 
             
@@ -256,8 +273,11 @@ def display_color():
                 hex3a = convert_to_hex(hex3a_h, hex3a_s, hex3a_v)
                 contrast = contrast_ratio1(hex2a, hex3a)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex3a = "#FFFFFF"
+                    hex_label11.config(text=hex3a)
+                    canvas11.create_rectangle(0, 0, 110, 110, fill=hex3a, outline="")
+                    contrast = 21
             hex_label11.config(text=hex3a)
             canvas11.create_rectangle(0, 0, 110, 110, fill=hex3a, outline="")
 
@@ -272,8 +292,11 @@ def display_color():
                 hex4 = convert_to_hex(hex4_h, hex4_s, hex4_v)
                 contrast = contrast_ratio(hex3, hex4)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex4 = "#FFFFFF"
+                    hex_label4.config(text=hex4)
+                    canvas4.create_rectangle(0, 0, 110, 110, fill=hex4, outline="")
+                    contrast = 21
             hex_label4.config(text=hex4)
             canvas4.create_rectangle(0, 0, 110, 110, fill=hex4, outline="")
             
@@ -288,8 +311,11 @@ def display_color():
                 hex4a = convert_to_hex(hex4a_h, hex4a_s, hex4a_v)
                 contrast = contrast_ratio1(hex3a, hex4a)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex4a = "#FFFFFF"
+                    hex_label12.config(text=hex4a)
+                    canvas12.create_rectangle(0, 0, 110, 110, fill=hex4a, outline="")
+                    contrast = 21
             hex_label12.config(text=hex4a)
             canvas12.create_rectangle(0, 0, 110, 110, fill=hex4a, outline="")
 
@@ -304,8 +330,11 @@ def display_color():
                 hex5 = convert_to_hex(hex5_h, hex5_s, hex5_v)
                 contrast = contrast_ratio(hex4, hex5)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex5 = "#FFFFFF"
+                    hex_label5.config(text=hex5)
+                    canvas5.create_rectangle(0, 0, 110, 110, fill=hex5, outline="")
+                    contrast = 21
             hex_label5.config(text=hex5)
             canvas5.create_rectangle(0, 0, 110, 110, fill=hex5, outline="")  
             
@@ -320,8 +349,11 @@ def display_color():
                 hex5a = convert_to_hex(hex5a_h, hex5a_s, hex5a_v)
                 contrast = contrast_ratio1(hex4a, hex5a)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex5a = "#FFFFFF"
+                    hex_label13.config(text=hex5a)
+                    canvas13.create_rectangle(0, 0, 110, 110, fill=hex5a, outline="")
+                    contrast = 21
             hex_label13.config(text=hex5a)
             canvas13.create_rectangle(0, 0, 110, 110, fill=hex5a, outline="")
 
@@ -336,8 +368,11 @@ def display_color():
                 hex6 = convert_to_hex(hex6_h, hex6_s, hex6_v)
                 contrast = contrast_ratio(hex5, hex6)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex6 = "#FFFFFF"
+                    hex_label6.config(text=hex6)
+                    canvas6.create_rectangle(0, 0, 110, 110, fill=hex6, outline="")
+                    contrast = 21
             hex_label6.config(text=hex6)                           
             canvas6.create_rectangle(0, 0, 110, 110, fill=hex6, outline="")
 
@@ -352,8 +387,11 @@ def display_color():
                 hex6a = convert_to_hex(hex6a_h, hex6a_s, hex6a_v)
                 contrast = contrast_ratio1(hex5a, hex6a)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex6a = "#FFFFFF"
+                    hex_label14.config(text=hex6a)
+                    canvas14.create_rectangle(0, 0, 110, 110, fill=hex6a, outline="")
+                    contrast = 21
             hex_label14.config(text=hex6a)                           
             canvas14.create_rectangle(0, 0, 110, 110, fill=hex6a, outline="")
             
@@ -369,8 +407,11 @@ def display_color():
                 hex7 = convert_to_hex(hex7_h, hex7_s, hex7_v)
                 contrast = contrast_ratio(hex6, hex7)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex7 = "#FFFFFF"
+                    hex_label7.config(text=hex7)
+                    canvas7.create_rectangle(0, 0, 110, 110, fill=hex7, outline="")
+                    contrast = 21
             hex_label7.config(text=hex7)
             canvas7.create_rectangle(0, 0, 110, 110, fill=hex7, outline="")  
             
@@ -385,8 +426,11 @@ def display_color():
                 hex7a = convert_to_hex(hex7a_h, hex7a_s, hex7a_v)
                 contrast = contrast_ratio1(hex6a, hex7a)
                 counter += 1
-                if counter > 100:
-                    return
+                if counter > 1000:
+                    hex7a = "#FFFFFF"
+                    hex_label15.config(text=hex7a)
+                    canvas15.create_rectangle(0, 0, 110, 110, fill=hex7a, outline="")
+                    contrast = 21
             hex_label15.config(text=hex7a)
             canvas15.create_rectangle(0, 0, 110, 110, fill=hex7a, outline="")
 
@@ -394,9 +438,12 @@ def copy_to_clipboard(hex):
     root.clipboard_clear()
     root.clipboard_append(hex)
 
+def show_about():
+    messagebox.showinfo("About", "This program is freeware, use as permitted in GNU GPL v3.0.\n\nLeave bug reports or whatever at https://github.com/Travis-Dunn/Color-ramp-generator/ \n\nMade by Travis Dunn 2023")
+
 while True:
     root = tk.Tk()
-    root.title("Color ramp generator")
+    root.title("Color ramp generator 1.0")
     
     mainframe = ttk.Frame(root, padding="0 0 0 0")
     mainframe.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
@@ -429,79 +476,76 @@ while True:
     ttk.Label(mainframe, text="Relative luminance using ITU BT. 709 spectral weights and accounting for gamma correction").grid(column=3, row=1, columnspan=7, sticky="w")
     ttk.Label(mainframe, text="Relative luminance using ITU BT. 601 spectral weights and accounting for gamma correction").grid(column=3, row=7, columnspan=7, sticky="w")
     
-    hex_label = ttk.Label(mainframe, text="")
-    hex_label1 = ttk.Label(mainframe, text="")
-    hex_label2 = ttk.Label(mainframe, text="")
-    hex_label3 = ttk.Label(mainframe, text="")
-    hex_label4 = ttk.Label(mainframe, text="")
-    hex_label5 = ttk.Label(mainframe, text="")
-    hex_label6 = ttk.Label(mainframe, text="")
-    hex_label7 = ttk.Label(mainframe, text="")   
-    
-    hex_label8 = ttk.Label(mainframe, text="")
-    hex_label9 = ttk.Label(mainframe, text="")
+    hex_label = ttk.Label(mainframe, text="")    
+    hex_label1 = ttk.Label(mainframe, text="") 
+    hex_label2 = ttk.Label(mainframe, text="") 
+    hex_label3 = ttk.Label(mainframe, text="") 
+    hex_label4 = ttk.Label(mainframe, text="") 
+    hex_label5 = ttk.Label(mainframe, text="") 
+    hex_label6 = ttk.Label(mainframe, text="") 
+    hex_label7 = ttk.Label(mainframe, text="")    
+    hex_label8 = ttk.Label(mainframe, text="") 
+    hex_label9 = ttk.Label(mainframe, text="") 
     hex_label10 = ttk.Label(mainframe, text="")
     hex_label11 = ttk.Label(mainframe, text="")
     hex_label12 = ttk.Label(mainframe, text="")
     hex_label13 = ttk.Label(mainframe, text="")
     hex_label14 = ttk.Label(mainframe, text="")
-    hex_label15 = ttk.Label(mainframe, text="")
+    hex_label15 = ttk.Label(mainframe, text="")   
+
+    hex_label.  grid(column=3,  row=5, sticky=tk.W)
+    hex_label1. grid(column=4,  row=5, sticky=tk.W)
+    hex_label2. grid(column=5,  row=5, sticky=tk.W)
+    hex_label3. grid(column=6,  row=5, sticky=tk.W)
+    hex_label4. grid(column=7,  row=5, sticky=tk.W)
+    hex_label5. grid(column=8,  row=5, sticky=tk.W)
+    hex_label6. grid(column=9,  row=5, sticky=tk.W)
+    hex_label7. grid(column=10, row=5, sticky=tk.W)  
+    hex_label8. grid(column=3,  row=11,sticky=tk.W)
+    hex_label9. grid(column=4,  row=11,sticky=tk.W)
+    hex_label10.grid(column=5,  row=11,sticky=tk.W)
+    hex_label11.grid(column=6,  row=11,sticky=tk.W)
+    hex_label12.grid(column=7,  row=11,sticky=tk.W)
+    hex_label13.grid(column=8,  row=11,sticky=tk.W)
+    hex_label14.grid(column=9,  row=11,sticky=tk.W)
+    hex_label15.grid(column=10, row=11,sticky=tk.W) 
     
-    hex_label.grid(column=3, row=5, sticky=tk.W)
-    hex_label1.grid(column=4, row=5, sticky=tk.W)
-    hex_label2.grid(column=5, row=5, sticky=tk.W)
-    hex_label3.grid(column=6, row=5, sticky=tk.W)
-    hex_label4.grid(column=7, row=5, sticky=tk.W)
-    hex_label5.grid(column=8, row=5, sticky=tk.W)
-    hex_label6.grid(column=9, row=5, sticky=tk.W)
-    hex_label7.grid(column=10, row=5, sticky=tk.W) 
-    
-    hex_label8.grid(column=3,   row=11, sticky=tk.W)
-    hex_label9.grid(column=4,   row=11, sticky=tk.W)
-    hex_label10.grid(column=5,  row=11, sticky=tk.W)
-    hex_label11.grid(column=6,  row=11, sticky=tk.W)
-    hex_label12.grid(column=7,  row=11, sticky=tk.W)
-    hex_label13.grid(column=8,  row=11, sticky=tk.W)
-    hex_label14.grid(column=9,  row=11, sticky=tk.W)
-    hex_label15.grid(column=10, row=11, sticky=tk.W)
-    
-    canvas = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
-    canvas1 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
-    canvas2 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
-    canvas3 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
-    canvas4 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
-    canvas5 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
-    canvas6 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
-    canvas7 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0) 
-    
-    canvas8 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
-    canvas9 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
+    canvas = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)  
+    canvas1 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0) 
+    canvas2 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0) 
+    canvas3 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0) 
+    canvas4 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0) 
+    canvas5 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0) 
+    canvas6 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0) 
+    canvas7 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)     
+    canvas8  = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
+    canvas9  = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
     canvas10 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
     canvas11 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
     canvas12 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
     canvas13 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
     canvas14 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
     canvas15 = tk.Canvas(mainframe, bg='white', width=110, height=110, bd=-2, highlightthickness = 0)
-    
-    canvas.grid(column=3, row=2, rowspan=4, sticky=(tk.W, tk.E))
-    canvas1.grid(column=4, row=2, rowspan=4, sticky=(tk.W, tk.E))
-    canvas2.grid(column=5, row=2, rowspan=4, sticky=(tk.W, tk.E))
-    canvas3.grid(column=6, row=2, rowspan=4, sticky=(tk.W, tk.E))
-    canvas4.grid(column=7, row=2, rowspan=4, sticky=(tk.W, tk.E))
-    canvas5.grid(column=8, row=2, rowspan=4, sticky=(tk.W, tk.E))
-    canvas6.grid(column=9, row=2, rowspan=4, sticky=(tk.W, tk.E))
-    canvas7.grid(column=10, row=2, rowspan=4, sticky=(tk.W, tk.E))
 
-    canvas8.grid(column=3,   row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas9.grid(column=4,   row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas10.grid(column=5,  row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas11.grid(column=6,  row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas12.grid(column=7,  row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas13.grid(column=8,  row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas14.grid(column=9,  row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas15.grid(column=10, row=8, rowspan=4, sticky=(tk.W, tk.E))
-    
-    ttk.Button(mainframe, text="Generate", command=display_color).grid(column=2, row=9, sticky=tk.W)   
+    canvas.  grid(column=3, row=2, rowspan=4, sticky=(tk.W, tk.E))
+    canvas1. grid(column=4, row=2, rowspan=4, sticky=(tk.W, tk.E))
+    canvas2. grid(column=5, row=2, rowspan=4, sticky=(tk.W, tk.E))
+    canvas3. grid(column=6, row=2, rowspan=4, sticky=(tk.W, tk.E))
+    canvas4. grid(column=7, row=2, rowspan=4, sticky=(tk.W, tk.E))
+    canvas5. grid(column=8, row=2, rowspan=4, sticky=(tk.W, tk.E))
+    canvas6. grid(column=9, row=2, rowspan=4, sticky=(tk.W, tk.E))
+    canvas7. grid(column=10,row=2, rowspan=4, sticky=(tk.W, tk.E))
+    canvas8. grid(column=3, row=8, rowspan=4, sticky=(tk.W, tk.E))
+    canvas9. grid(column=4, row=8, rowspan=4, sticky=(tk.W, tk.E))
+    canvas10.grid(column=5, row=8, rowspan=4, sticky=(tk.W, tk.E))
+    canvas11.grid(column=6, row=8, rowspan=4, sticky=(tk.W, tk.E))
+    canvas12.grid(column=7, row=8, rowspan=4, sticky=(tk.W, tk.E))
+    canvas13.grid(column=8, row=8, rowspan=4, sticky=(tk.W, tk.E))
+    canvas14.grid(column=9, row=8, rowspan=4, sticky=(tk.W, tk.E))
+    canvas15.grid(column=10,row=8, rowspan=4, sticky=(tk.W, tk.E))
+            
+    ttk.Button(mainframe, text="Generate", command=display_color).grid(column=2, row=9, sticky=tk.W)
+    ttk.Button(mainframe, text="about", command=show_about).grid(column=2, row=10, sticky=tk.W)
     
     ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label.cget("text"))).grid(column=3, row=6, sticky=tk.S)
     ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label1.cget("text"))).grid(column=4, row=6, sticky=tk.S)
@@ -510,8 +554,7 @@ while True:
     ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label4.cget("text"))).grid(column=7, row=6, sticky=tk.S)
     ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label5.cget("text"))).grid(column=8, row=6, sticky=tk.S)
     ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label6.cget("text"))).grid(column=9, row=6, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label7.cget("text"))).grid(column=10, row=6, sticky=tk.S)
-    
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label7.cget("text"))).grid(column=10, row=6, sticky=tk.S)    
     ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label8.cget("text"))).grid(column=3,   row=12, sticky=tk.S)
     ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label9.cget("text"))).grid(column=4,   row=12, sticky=tk.S)
     ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label10.cget("text"))).grid(column=5,  row=12, sticky=tk.S)
