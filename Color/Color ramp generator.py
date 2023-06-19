@@ -124,7 +124,7 @@ def increment_color(hue, saturation, value, dHue, dSaturation, dValue):
             if new_hue > 360:
                 new_hue = new_hue - 360
             if new_hue < 0:
-                new_hue = 0
+                new_hue = new_hue + 360
             if new_saturation > 100:
                 new_saturation = 100
             if new_saturation < 0:
