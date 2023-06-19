@@ -161,9 +161,12 @@ def display_color():
             hex_code = convert_to_hex(h, s, v)
             hex_label.config(text=hex_code)                  
             canvas.create_rectangle(0, 0, 110, 110, fill=hex_code, outline="")  
+            formatted_string = f"{h} | {s} | {v}"
+            HSV_label_0.config(text=formatted_string)
             #0 second row
             hex_label8.config(text=hex_code)                  
             canvas8.create_rectangle(0, 0, 110, 110, fill=hex_code, outline="")
+            HSV_label_8.config(text=formatted_string)
             
             #1
             
@@ -180,10 +183,14 @@ def display_color():
                     hex1 = "#FFFFFF"
                     hex_label1.config(text=hex1)
                     canvas1.create_rectangle(0, 0, 110, 110, fill=hex1, outline="")
+                    formatted_string = f"{hex1_h} | {hex1_s} | {hex1_v}"
+                    HSV_label_1.config(text=formatted_string)
                     contrast = 21 
 
             hex_label1.config(text=hex1)
             canvas1.create_rectangle(0, 0, 110, 110, fill=hex1, outline="")
+            formatted_string = f"{hex1_h} | {hex1_s} | {hex1_v}"
+            HSV_label_1.config(text=formatted_string)
             
             #1 second row
             
@@ -200,11 +207,14 @@ def display_color():
                     hex1a = "#FFFFFF"
                     hex_label9.config(text=hex1a)
                     canvas9.create_rectangle(0, 0, 110, 110, fill=hex1a, outline="")
+                    formatted_string = f"{hex1a_h} | {hex1a_s} | {hex1a_v}"
+                    HSV_label_9.config(text=formatted_string)
                     contrast = 21
 
             hex_label9.config(text=hex1a)
             canvas9.create_rectangle(0, 0, 110, 110, fill=hex1a, outline="")
-
+            formatted_string = f"{hex1a_h} | {hex1a_s} | {hex1a_v}"
+            HSV_label_9.config(text=formatted_string)
             #2
 
             hex2_h, hex2_s, hex2_v = increment_color(hex1_h, hex1_s, hex1_v, dh, ds, dv)
@@ -220,9 +230,13 @@ def display_color():
                     hex2 = "#FFFFFF"
                     hex_label2.config(text=hex2)
                     canvas2.create_rectangle(0, 0, 110, 110, fill=hex2, outline="")
+                    formatted_string = f"{hex2_h} | {hex2_s} | {hex2_v}"
+                    HSV_label_2.config(text=formatted_string)
                     contrast = 21
             hex_label2.config(text=hex2)
-            canvas2.create_rectangle(0, 0, 110, 110, fill=hex2, outline="") 
+            canvas2.create_rectangle(0, 0, 110, 110, fill=hex2, outline="")
+            formatted_string = f"{hex2_h} | {hex2_s} | {hex2_v}"
+            HSV_label_2.config(text=formatted_string)
             
             #2 second row
 
@@ -239,10 +253,13 @@ def display_color():
                     hex2a = "#FFFFFF"
                     hex_label10.config(text=hex2a)
                     canvas10.create_rectangle(0, 0, 110, 110, fill=hex2a, outline="")
+                    formatted_string = f"{hex2a_h} | {hex2a_s} | {hex2a_v}"
+                    HSV_label_10.config(text=formatted_string)
                     contrast = 21
             hex_label10.config(text=hex2a)
             canvas10.create_rectangle(0, 0, 110, 110, fill=hex2a, outline="")
-
+            formatted_string = f"{hex2a_h} | {hex2a_s} | {hex2a_v}"
+            HSV_label_10.config(text=formatted_string)
             #3
 
             hex3_h, hex3_s, hex3_v = increment_color(hex2_h, hex2_s, hex2_v, dh, ds, dv)
@@ -258,9 +275,13 @@ def display_color():
                     hex3 = "#FFFFFF"
                     hex_label3.config(text=hex3)
                     canvas3.create_rectangle(0, 0, 110, 110, fill=hex3, outline="")
+                    formatted_string = f"{hex3_h} | {hex3_s} | {hex3_v}"
+                    HSV_label_3.config(text=formatted_string)
                     contrast = 21
             hex_label3.config(text=hex3)
-            canvas3.create_rectangle(0, 0, 110, 110, fill=hex3, outline="") 
+            canvas3.create_rectangle(0, 0, 110, 110, fill=hex3, outline="")
+            formatted_string = f"{hex3_h} | {hex3_s} | {hex3_v}"
+            HSV_label_3.config(text=formatted_string)
             
             #3 second row
 
@@ -277,10 +298,13 @@ def display_color():
                     hex3a = "#FFFFFF"
                     hex_label11.config(text=hex3a)
                     canvas11.create_rectangle(0, 0, 110, 110, fill=hex3a, outline="")
+                    formatted_string = f"{hex3a_h} | {hex3a_s} | {hex3a_v}"
+                    HSV_label_11.config(text=formatted_string)
                     contrast = 21
             hex_label11.config(text=hex3a)
             canvas11.create_rectangle(0, 0, 110, 110, fill=hex3a, outline="")
-
+            formatted_string = f"{hex3a_h} | {hex3a_s} | {hex3a_v}"
+            HSV_label_11.config(text=formatted_string)
             #4
 
             hex4_h, hex4_s, hex4_v = increment_color(hex3_h, hex3_s, hex3_v, dh, ds, dv)
@@ -296,9 +320,13 @@ def display_color():
                     hex4 = "#FFFFFF"
                     hex_label4.config(text=hex4)
                     canvas4.create_rectangle(0, 0, 110, 110, fill=hex4, outline="")
+                    formatted_string = f"{hex4_h} | {hex4_s} | {hex4_v}"
+                    HSV_label_4.config(text=formatted_string)
                     contrast = 21
             hex_label4.config(text=hex4)
             canvas4.create_rectangle(0, 0, 110, 110, fill=hex4, outline="")
+            formatted_string = f"{hex4_h} | {hex4_s} | {hex4_v}"
+            HSV_label_4.config(text=formatted_string)
             
             #4 second row
 
@@ -315,9 +343,13 @@ def display_color():
                     hex4a = "#FFFFFF"
                     hex_label12.config(text=hex4a)
                     canvas12.create_rectangle(0, 0, 110, 110, fill=hex4a, outline="")
+                    formatted_string = f"{hex4a_h} | {hex4a_s} | {hex4a_v}"
+                    HSV_label_12.config(text=formatted_string)
                     contrast = 21
             hex_label12.config(text=hex4a)
             canvas12.create_rectangle(0, 0, 110, 110, fill=hex4a, outline="")
+            formatted_string = f"{hex4a_h} | {hex4a_s} | {hex4a_v}"
+            HSV_label_12.config(text=formatted_string)
 
             #5
 
@@ -334,9 +366,13 @@ def display_color():
                     hex5 = "#FFFFFF"
                     hex_label5.config(text=hex5)
                     canvas5.create_rectangle(0, 0, 110, 110, fill=hex5, outline="")
+                    formatted_string = f"{hex5_h} | {hex5_s} | {hex5_v}"
+                    HSV_label_5.config(text=formatted_string)
                     contrast = 21
             hex_label5.config(text=hex5)
-            canvas5.create_rectangle(0, 0, 110, 110, fill=hex5, outline="")  
+            canvas5.create_rectangle(0, 0, 110, 110, fill=hex5, outline="") 
+            formatted_string = f"{hex5_h} | {hex5_s} | {hex5_v}"
+            HSV_label_5.config(text=formatted_string)
             
             #5 second row
 
@@ -353,9 +389,13 @@ def display_color():
                     hex5a = "#FFFFFF"
                     hex_label13.config(text=hex5a)
                     canvas13.create_rectangle(0, 0, 110, 110, fill=hex5a, outline="")
+                    formatted_string = f"{hex5a_h} | {hex5a_s} | {hex5a_v}"
+                    HSV_label_13.config(text=formatted_string)
                     contrast = 21
             hex_label13.config(text=hex5a)
             canvas13.create_rectangle(0, 0, 110, 110, fill=hex5a, outline="")
+            formatted_string = f"{hex5a_h} | {hex5a_s} | {hex5a_v}"
+            HSV_label_13.config(text=formatted_string)
 
             #6
 
@@ -372,9 +412,13 @@ def display_color():
                     hex6 = "#FFFFFF"
                     hex_label6.config(text=hex6)
                     canvas6.create_rectangle(0, 0, 110, 110, fill=hex6, outline="")
+                    formatted_string = f"{hex6_h} | {hex6_s} | {hex6_v}"
+                    HSV_label_6.config(text=formatted_string)
                     contrast = 21
             hex_label6.config(text=hex6)                           
             canvas6.create_rectangle(0, 0, 110, 110, fill=hex6, outline="")
+            formatted_string = f"{hex6_h} | {hex6_s} | {hex6_v}"
+            HSV_label_6.config(text=formatted_string)
 
             #6 second row
 
@@ -391,9 +435,13 @@ def display_color():
                     hex6a = "#FFFFFF"
                     hex_label14.config(text=hex6a)
                     canvas14.create_rectangle(0, 0, 110, 110, fill=hex6a, outline="")
+                    formatted_string = f"{hex6a_h} | {hex6a_s} | {hex6a_v}"
+                    HSV_label_14.config(text=formatted_string)
                     contrast = 21
             hex_label14.config(text=hex6a)                           
             canvas14.create_rectangle(0, 0, 110, 110, fill=hex6a, outline="")
+            formatted_string = f"{hex6a_h} | {hex6a_s} | {hex6a_v}"
+            HSV_label_14.config(text=formatted_string)
             
 
             #7
@@ -411,9 +459,13 @@ def display_color():
                     hex7 = "#FFFFFF"
                     hex_label7.config(text=hex7)
                     canvas7.create_rectangle(0, 0, 110, 110, fill=hex7, outline="")
+                    formatted_string = f"{hex7_h} | {hex7_s} | {hex7_v}"
+                    HSV_label_7.config(text=formatted_string)
                     contrast = 21
             hex_label7.config(text=hex7)
             canvas7.create_rectangle(0, 0, 110, 110, fill=hex7, outline="")  
+            formatted_string = f"{hex7_h} | {hex7_s} | {hex7_v}"
+            HSV_label_7.config(text=formatted_string)
             
             #7 second row
 
@@ -430,9 +482,13 @@ def display_color():
                     hex7a = "#FFFFFF"
                     hex_label15.config(text=hex7a)
                     canvas15.create_rectangle(0, 0, 110, 110, fill=hex7a, outline="")
+                    formatted_string = f"{hex7a_h} | {hex7a_s} | {hex7a_v}"
+                    HSV_label_15.config(text=formatted_string)
                     contrast = 21
             hex_label15.config(text=hex7a)
             canvas15.create_rectangle(0, 0, 110, 110, fill=hex7a, outline="")
+            formatted_string = f"{hex7a_h} | {hex7a_s} | {hex7a_v}"
+            HSV_label_15.config(text=formatted_string)
 
 def copy_to_clipboard(hex):
     root.clipboard_clear()
@@ -443,7 +499,7 @@ def show_about():
 
 while True:
     root = tk.Tk()
-    root.title("Color ramp generator 1.0")
+    root.title("Color ramp generator 1.01")
     
     mainframe = ttk.Frame(root, padding="0 0 0 0")
     mainframe.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
@@ -474,7 +530,7 @@ while True:
     ttk.Label(mainframe, text="Delta saturation:").grid(column=1, row=6, sticky=tk.W)
     ttk.Label(mainframe, text="Delta value:").grid(column=1, row=7, sticky=tk.W)
     ttk.Label(mainframe, text="Relative luminance using ITU BT. 709 spectral weights and accounting for gamma correction").grid(column=3, row=1, columnspan=7, sticky="w")
-    ttk.Label(mainframe, text="Relative luminance using ITU BT. 601 spectral weights and accounting for gamma correction").grid(column=3, row=7, columnspan=7, sticky="w")
+    ttk.Label(mainframe, text="Relative luminance using ITU BT. 601 spectral weights and accounting for gamma correction").grid(column=3, row=8, columnspan=7, sticky="w")
     
     hex_label = ttk.Label(mainframe, text="")    
     hex_label1 = ttk.Label(mainframe, text="") 
@@ -492,6 +548,42 @@ while True:
     hex_label13 = ttk.Label(mainframe, text="")
     hex_label14 = ttk.Label(mainframe, text="")
     hex_label15 = ttk.Label(mainframe, text="")   
+
+    # new stuff
+    HSV_label_0  = ttk.Label(mainframe, text="null")
+    HSV_label_1  = ttk.Label(mainframe, text="null")
+    HSV_label_2  = ttk.Label(mainframe, text="null")
+    HSV_label_3  = ttk.Label(mainframe, text="null")
+    HSV_label_4  = ttk.Label(mainframe, text="null")
+    HSV_label_5  = ttk.Label(mainframe, text="null")
+    HSV_label_6  = ttk.Label(mainframe, text="null")
+    HSV_label_7  = ttk.Label(mainframe, text="null")
+    HSV_label_8  = ttk.Label(mainframe, text="null")
+    HSV_label_9  = ttk.Label(mainframe, text="null")
+    HSV_label_10 = ttk.Label(mainframe, text="null")
+    HSV_label_11 = ttk.Label(mainframe, text="null")
+    HSV_label_12 = ttk.Label(mainframe, text="null")
+    HSV_label_13 = ttk.Label(mainframe, text="null")
+    HSV_label_14 = ttk.Label(mainframe, text="null")
+    HSV_label_15 = ttk.Label(mainframe, text="null")
+
+    HSV_label_0 .grid(column=3 , row=6 , sticky=tk.W)
+    HSV_label_1 .grid(column=4 , row=6 , sticky=tk.W)
+    HSV_label_2 .grid(column=5 , row=6 , sticky=tk.W)
+    HSV_label_3 .grid(column=6 , row=6 , sticky=tk.W)
+    HSV_label_4 .grid(column=7 , row=6 , sticky=tk.W)
+    HSV_label_5 .grid(column=8 , row=6 , sticky=tk.W)
+    HSV_label_6 .grid(column=9 , row=6 , sticky=tk.W)
+    HSV_label_7 .grid(column=10, row=6 , sticky=tk.W)
+    HSV_label_8 .grid(column=3 , row=13, sticky=tk.W)
+    HSV_label_9 .grid(column=4 , row=13, sticky=tk.W)
+    HSV_label_10.grid(column=5 , row=13, sticky=tk.W)
+    HSV_label_11.grid(column=6 , row=13, sticky=tk.W)
+    HSV_label_12.grid(column=7 , row=13, sticky=tk.W)
+    HSV_label_13.grid(column=8 , row=13, sticky=tk.W)
+    HSV_label_14.grid(column=9 , row=13, sticky=tk.W)
+    HSV_label_15.grid(column=10, row=13, sticky=tk.W)
+    # end new stuff
 
     hex_label.  grid(column=3,  row=5, sticky=tk.W)
     hex_label1. grid(column=4,  row=5, sticky=tk.W)
@@ -535,34 +627,34 @@ while True:
     canvas5. grid(column=8, row=2, rowspan=4, sticky=(tk.W, tk.E))
     canvas6. grid(column=9, row=2, rowspan=4, sticky=(tk.W, tk.E))
     canvas7. grid(column=10,row=2, rowspan=4, sticky=(tk.W, tk.E))
-    canvas8. grid(column=3, row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas9. grid(column=4, row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas10.grid(column=5, row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas11.grid(column=6, row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas12.grid(column=7, row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas13.grid(column=8, row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas14.grid(column=9, row=8, rowspan=4, sticky=(tk.W, tk.E))
-    canvas15.grid(column=10,row=8, rowspan=4, sticky=(tk.W, tk.E))
+    canvas8. grid(column=3, row=9, rowspan=4, sticky=(tk.W, tk.E))
+    canvas9. grid(column=4, row=9, rowspan=4, sticky=(tk.W, tk.E))
+    canvas10.grid(column=5, row=9, rowspan=4, sticky=(tk.W, tk.E))
+    canvas11.grid(column=6, row=9, rowspan=4, sticky=(tk.W, tk.E))
+    canvas12.grid(column=7, row=9, rowspan=4, sticky=(tk.W, tk.E))
+    canvas13.grid(column=8, row=9, rowspan=4, sticky=(tk.W, tk.E))
+    canvas14.grid(column=9, row=9, rowspan=4, sticky=(tk.W, tk.E))
+    canvas15.grid(column=10,row=9, rowspan=4, sticky=(tk.W, tk.E))
             
     ttk.Button(mainframe, text="Generate", command=display_color).grid(column=2, row=9, sticky=tk.W)
     ttk.Button(mainframe, text="about", command=show_about).grid(column=2, row=10, sticky=tk.W)
     
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label.cget("text"))).grid(column=3, row=6, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label1.cget("text"))).grid(column=4, row=6, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label2.cget("text"))).grid(column=5, row=6, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label3.cget("text"))).grid(column=6, row=6, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label4.cget("text"))).grid(column=7, row=6, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label5.cget("text"))).grid(column=8, row=6, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label6.cget("text"))).grid(column=9, row=6, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label7.cget("text"))).grid(column=10, row=6, sticky=tk.S)    
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label8.cget("text"))).grid(column=3,   row=12, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label9.cget("text"))).grid(column=4,   row=12, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label10.cget("text"))).grid(column=5,  row=12, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label11.cget("text"))).grid(column=6,  row=12, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label12.cget("text"))).grid(column=7,  row=12, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label13.cget("text"))).grid(column=8,  row=12, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label14.cget("text"))).grid(column=9,  row=12, sticky=tk.S)
-    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label15.cget("text"))).grid(column=10, row=12, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label .cget("text"))).grid(column= 3, row=7, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label1.cget("text"))).grid(column= 4, row=7, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label2.cget("text"))).grid(column= 5, row=7, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label3.cget("text"))).grid(column= 6, row=7, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label4.cget("text"))).grid(column= 7, row=7, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label5.cget("text"))).grid(column= 8, row=7, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label6.cget("text"))).grid(column= 9, row=7, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label7.cget("text"))).grid(column=10, row=7, sticky=tk.S)    
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label8.cget("text"))).grid(column=3,   row=14, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label9.cget("text"))).grid(column=4,   row=14, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label10.cget("text"))).grid(column=5,  row=14, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label11.cget("text"))).grid(column=6,  row=14, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label12.cget("text"))).grid(column=7,  row=14, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label13.cget("text"))).grid(column=8,  row=14, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label14.cget("text"))).grid(column=9,  row=14, sticky=tk.S)
+    ttk.Button(mainframe, text="Copy hex", command=lambda: copy_to_clipboard(hex_label15.cget("text"))).grid(column=10, row=14, sticky=tk.S)
     
     for child in mainframe.winfo_children(): child.grid_configure(padx=0, pady=5)
     
